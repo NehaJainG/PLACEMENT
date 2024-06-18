@@ -1,0 +1,6 @@
+#vs code config
+*.json
+
+#class or executable files
+*.class
+*.exe 

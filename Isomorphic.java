@@ -1,10 +1,6 @@
 import java.util.*;
 
 public class Isomorphic {
-    
-}
-
-class Solution {
     public boolean isIsomorphic(String s, String t) {
         HashMap<Character,Character> map = new HashMap<Character, Character>();
         boolean isIso = true;
@@ -14,7 +10,6 @@ class Solution {
             }
             map.put(s.charAt(i), t.charAt(i));
         }
-
 
         return isIso;
         

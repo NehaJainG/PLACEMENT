@@ -21,5 +21,6 @@ public class ReverseInteger {
         int num = sc.nextInt();
         System.out.println((int) Math.pow(2, 31));
         System.out.println(reverse(num));
+        sc.close();
     }
 }

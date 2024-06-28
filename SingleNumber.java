@@ -8,7 +8,7 @@ public class SingleNumber{
         public static int singleNumber(int[] nums) {
             // n ^ n = 0
             // 0 ^ n = n
-            //using these we can find out the number which occurs once
+            //use ^ and these explains how it is possible to find out the number which occurs once
             int ans = 0;
             for(int i = 0; i < nums.length; i++){
                 ans = ans ^ nums[i];

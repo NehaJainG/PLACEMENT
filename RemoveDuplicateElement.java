@@ -10,11 +10,11 @@ import java.util.Scanner;
 public class RemoveDuplicateElement {
     public static int removeDuplicates(int[] nums) {
         //function works for only sorted array.
-        int pos = 1, eleIndex = 1;
-        for( ; eleIndex < nums.length; eleIndex++){
-            if(nums[eleIndex] != nums[eleIndex-1]){
-                if(pos != eleIndex) nums[pos] = nums[eleIndex];
+        int pos = 0;
+        for( int eleIndex = 1; eleIndex < nums.length; eleIndex++){
+            if(nums[eleIndex] != nums[pos]){
                 pos++;
+                nums[pos] = nums[eleIndex];
             }
         }
 

@@ -1,26 +1,43 @@
 public class MoveZeros {
 
-    public void moveZero(int[] nums) {
-        //this didn't work for half test case so look into why?
-        /* nums =[4,2,4,0,0,3,0,5,1,0]
-        Use Testcase
-        Output
-        [4,0,0,0,0,3,2,5,1,4]
-        Expected
-        [4,2,4,3,5,1,0,0,0,0] */
+    public void moveZeroesMySolution(int[] nums) {
         int zeroIndex = 0 , nonZeroIndex = 1;
         while(zeroIndex < nums.length && nonZeroIndex < nums.length){
-            if(nums[zeroIndex]  != 0) zeroIndex++;
+            if(nums[zeroIndex]  != 0) {
+                zeroIndex++;
+                if(zeroIndex >= nonZeroIndex) nonZeroIndex = zeroIndex + 1;
+            }
             else if(nums[nonZeroIndex] == 0) nonZeroIndex++;
             else if(nums[zeroIndex] == 0 && nums[nonZeroIndex] != 0){
                 int temp = nums[zeroIndex];
-                nums[zeroIndex] = nums[nonZeroIndex];
-                nums[nonZeroIndex] = temp;
-                zeroIndex++;
-                nonZeroIndex++;
+                nums[zeroIndex++] = nums[nonZeroIndex];
+                nums[nonZeroIndex++] = temp;
             }
         }
-        
+     
+    }
+
+    public static void moverZerosToEnd(int[] nums){
+        int zeroIndex = -1;
+
+        //find the index where first zero is found
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] == 0){
+                zeroIndex = i;
+                break;
+            }
+        }
+
+        if(zeroIndex == -1 ) return;
+
+        //traaverse through the rest of array and swap the elements from zeroIndex with i if nums[i] is non-zero Number.
+        for(int i = zeroIndex + 1; i < nums.length; i++){
+            if(nums[i] != 0){
+                nums[zeroIndex] = nums[i];
+                nums[i] = 0;
+                zeroIndex++;
+            }
+        }
     }
 
     public void moveZeroes(int[] nums) {

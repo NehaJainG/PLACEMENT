@@ -1,0 +1,11 @@
+1. HOURGLASS:
+given a 2d matrix find the maximum sum of hourglass
+hourglass is made up of 7 cells
+A B C 
+  D 
+E F G
+no of rows and no of cols is 3
+
+2. Given two strings a and b. Find if one string can be obtained by rotating other string with 2 place
+
+3. Given positive integer n. find n fibonocii value

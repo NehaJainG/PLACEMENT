@@ -9,3 +9,18 @@ no of rows and no of cols is 3
 2. Given two strings a and b. Find if one string can be obtained by rotating other string with 2 place
 
 3. Given positive integer n. find n fibonocii value
+
+4. check if the given number is divisible by 7
+number: 175
+1. take last digit and multiply by 2 --> 5 * 2 = 10
+2. subtract it with rest of digits --> 17 - 10 = 7
+3. Do until you get single digit number. 
+
+if all strings appear same number of times. it is also valid if he can remove just one character at one index in the string 
+and the remaining characters will occur same number of times. if valid return s else return "No". 
+
+Find the first unique character.
+
+count the no of occurence of character on string.
+Special string 
+a string is said to be a special string if their of all characters are same

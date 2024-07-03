@@ -1,7 +1,8 @@
 import java.util.HashSet;
+//import java.util.Scanner;
 
 public class LongestSubstringWithoutRepe {
-    public int lengthOfLongestSubstring(String s) {
+    public static int lengthOfLongestSubstring(String s) {
         HashSet<Character> set = new HashSet<Character>();
         int left = 0, maxLength = 0;
         for(int right = 0; right < s.length(); right++){
@@ -15,5 +16,12 @@ public class LongestSubstringWithoutRepe {
 
         return maxLength;
         
+    }
+
+    public static void main(String[] args) {
+        //Scanner sc = new Scanner(System.in);
+        String str = "abcabcdeabb";
+        System.out.println(lengthOfLongestSubstring(str));
+
     }
 }

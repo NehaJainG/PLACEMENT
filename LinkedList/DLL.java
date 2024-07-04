@@ -73,20 +73,24 @@ public class DLL {
     }
 
     public static void deleteAtPosition(int pos){
-        if(head == null){
+        if(head == null && pos < 1){
             return;
         }
-        if(head.next == null || pos <= 1){
+        if(head.next == null || pos == 1){
             deleteAtBegin();
+            return;
         }
 
         Node temp = head;
-        while(pos > 2 && temp.next != null) {
+        while(pos > 1 && temp.next != null) {
             temp = temp.next;
             pos--;
         }
-
-        if(temp.next == null){
+        
+        if(pos > 1){
+            System.out.println("Cannot delete, no element found at the place");
+            return;
+        }else if(temp.next == null){
             deleteAtEnd();
             return;
         }

@@ -23,4 +23,11 @@ Find the first unique character.
 
 count the no of occurence of character on string.
 Special string 
-a string is said to be a special string if their of all characters are same
+a string is said to be a special string if their of all characters are same.
+
+=============================
+1. LONGEST Repeating subSequence.
+2. print all unique digits present in contatination in order of its occurence.
+3. product 
+n = 5 a = 10,3,5,6,2 
+180 600 360 300 900

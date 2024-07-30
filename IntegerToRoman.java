@@ -16,6 +16,9 @@ import java.util.HashMap;
 
 public class IntegerToRoman {
     public static String intToRoman(int num) {
+        
+        //if you are allowed to use only crucial symbols. Then use this solution
+
         HashMap<Integer,String> symbols = new HashMap<Integer,String>();
         String result = "";
         int pos = 0;
@@ -23,15 +26,15 @@ public class IntegerToRoman {
         symbols.put(100,"C"); symbols.put(500,"D");symbols.put(1000,"M");
 
         while(num > 0){
-            int temp = num % 10;
+            int temp = num % 10;   //get the digit
             String t = new String();
-            System.out.println(temp);
-            int key = (int) Math.pow(10, pos);
+            //System.out.println(temp);
+            int key = (int) Math.pow(10, pos);   //get place of number like if 1s/1os/100th place...
 
             if(temp < 4){
-                t = symbols.get(key).repeat(temp);
+                t = symbols.get(key).repeat(temp);    
             }else if(temp == 4){
-                t =  symbols.get(key) + symbols.get( 5 * key);
+                t =  symbols.get(key) + symbols.get( 5 * key);   
             }else if (temp < 9) {
                 t = symbols.get( 5 * key) + symbols.get(key).repeat(temp - 5);
             }else{

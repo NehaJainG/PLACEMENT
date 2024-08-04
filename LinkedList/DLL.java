@@ -1,94 +1,130 @@
 import java.util.Scanner;
 
-public class SLL {
-    static Node head;
+public class DLL {
+    public static Node head;
 
-    static void insertAtBegin(int data){
+
+    public static void insertAtBegin(int data){
         Node newNode = new Node(data);
-        newNode.next = head;
+        
+        if(head != null){
+            newNode.next = head;
+            head.prev = newNode;
+        }
         head = newNode;
     }
 
-    static void insertAtEnd(int data){
+    public static void insertAtEnd(int data){
         if(head == null){
             insertAtBegin(data);
             return;
         }
+        
         Node newNode = new Node(data);
         Node temp = head;
         while(temp.next != null){
             temp = temp.next;
         }
         temp.next = newNode;
+        newNode.prev = temp;
     }
 
-    static void insertAtPosition(int data, int position){
-        if(head == null || position == 1){
+    public static void insertAtPosition(int data, int pos){
+        if(head == null || pos == 1){
             insertAtBegin(data);
             return;
         }
-        Node newNode = new Node(data);
+        
         Node temp = head;
-        while(position > 2 && temp.next != null){
+        while(pos > 2 && temp.next != null){
             temp = temp.next;
-            position--;
+            pos--;
         }
+        if(temp.next == null){
+            insertAtEnd(data);
+            return;
+        }
+        Node newNode = new Node(data);
+        temp.next.prev = newNode;
         newNode.next = temp.next;
-        temp.next = newNode;        
+        temp.next = newNode;
+        newNode.prev = temp;
     }
 
-    static void deleteAtBegin(){
+    public static void deleteAtBegin(){
         if(head == null) return;
         head = head.next;
+        if(head == null) return;    //if it is the last element then do nothing.
+        head.prev = null;           //if it has more than one element in the linked list  
     }
 
-    static void deleteAtEnd(){
-        if(head == null) return;
+    public static void deleteAtEnd(){
+        if(head == null){
+            return;
+        }
 
         if(head.next == null){
             deleteAtBegin();
-            return;
         }
+
         Node temp = head;
-        while(temp.next.next != null){
-            temp = temp.next;
-        }
+        while(temp.next.next != null) temp = temp.next;
         temp.next = null;
     }
 
-    static void deleteAtPosition(int pos){
-        if(head == null) return;
-
+    public static void deleteAtPosition(int pos){
+        if(head == null && pos < 1){
+            return;
+        }
         if(head.next == null || pos == 1){
             deleteAtBegin();
             return;
         }
+
         Node temp = head;
-        while(pos > 2 && temp.next.next != null ){
+        while(pos > 1 && temp.next != null) {
             temp = temp.next;
             pos--;
         }
-        temp.next = temp.next.next;
+        
+        if(pos > 1){
+            System.out.println("Cannot delete, no element found at the place");
+            return;
+        }else if(temp.next == null){
+            deleteAtEnd();
+            return;
+        }
+
+        temp.next.prev = temp.prev;
+        temp.prev.next = temp.next;      
+
     }
 
-
-    static void display(){
+    public static void display(){
         Node temp = head;
-        while(temp != null){
+        while(temp!= null){
             System.out.print(temp.data + " ");
             temp = temp.next;
         }
         System.out.println();
     }
-
-    public static void main(String[] args){
+    public static void reverse(){
+        Node temp = head;
+        while(temp.next != null) temp = temp.next;
+        while(temp != null){
+            System.out.print(temp.data + " ");
+            temp = temp.prev; 
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int data, pos;
         System.out.println("1.Insert at begin \n2.Insert at end \n3.Insert at position");
         System.out.println("4.Delete at begin \n5.Delete at end \n6.Delete at position");
-        System.out.println("7.Display\n8.Exit\nEnter the choice:");
+        System.out.println("7.Display\n8.Reverse \n9.Exit\nEnter the choice:");
         int ch = sc.nextInt();
-        while(ch != 8){
+        while(ch != 9){
             switch (ch) {
                 case 1:
                     System.out.print("Enter new element ");
@@ -103,7 +139,7 @@ public class SLL {
                 case 3:
                     System.out.print("Enter new element ");
                     data = sc.nextInt();
-                    System.out.println("Enter the position");
+                    System.out.print("Enter the position");
                     pos = sc.nextInt();
                     insertAtPosition(data,pos);
                     break;
@@ -122,21 +158,24 @@ public class SLL {
                     display();
                     break;
                 case 8:
-                    sc.close();
+                    reverse();
                     break;
                 default:
                     break;
             }
             System.out.println("Enter the choice");
             ch = sc.nextInt();
+            if(ch == 9) sc.close();
         }
     }
 }
 class Node{
     int data;
+    Node prev;
     Node next;
     Node(int data){
         this.data = data;
+        this.prev = null;
         this.next = null;
     }
 }

@@ -30,9 +30,24 @@ public class MajorityElement {
         return nums[nums.length / 2];
     }
 
+    //Moore's voting algorithm:
+    public static int majorityElement(int[] nums){
+        int element = nums[0] , count = 1;
+        for(int i = 1; i < nums.length ; i++){
+            if(count == 0) element = nums[i];
+            if(element == nums[i]) count++;
+            else count--;
+        }
+        count = 0;
+        for(int i = 0; i < nums.length; i++) if(nums[i] == element) count++;
+
+        if(count > nums.length / 2) return element;
+        return - 1;
+    }
+
     public static void main(String[] args) {
-        int num[] = {2,2,1,1,1,2,2};
-        System.out.println(majorityElementSorting(num));
+        int num[] = {1,1,2,2,1};
+        System.out.println(majorityElement(num));
     }
 
 }

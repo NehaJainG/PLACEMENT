@@ -62,6 +62,7 @@ public class QueueUsingStack {
                     break;
                 case 5:
                 System.out.println("Existing");
+                break;
                 default:
                  System.out.println("Wrong Input");
                     break;

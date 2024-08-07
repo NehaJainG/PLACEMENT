@@ -13,6 +13,21 @@ public class RotateString {
     //     }
     // }
 
+    public boolean rotateString(String s, String goal) {
+        //brute force method
+        for(int i = 0; i < s.length();i++){
+            s = s.substring(1) + s.charAt(0);
+            if(s.equals(goal)) return true;
+        }
+        return false;
+    }
+
+    public boolean rotateString2(String s, String goal) {
+        //optimal approach. but it takes space.
+        if(s.length() != goal.length()) return false;
+        String combined = s+s;
+        return combined.contains(goal);
+    }
 
 
     public static void main(String[] args) {

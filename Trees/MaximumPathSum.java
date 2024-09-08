@@ -1,16 +1,4 @@
 public class MaximumPathSum {
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
     
     //prerequite is how to find the height and width(diameter) of tree, then this problem is simple to solve.
     public int maxPath(TreeNode root, int[] max){

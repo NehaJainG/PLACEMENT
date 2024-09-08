@@ -1,17 +1,4 @@
 class DiameterOfBT{
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode() {}
-        TreeNode(int val) { this.val = val; }
-        TreeNode(int val, TreeNode left, TreeNode right) {
-            this.val = val;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
     int height(TreeNode root){
         if (root == null) return 0;
 
@@ -42,6 +29,7 @@ class DiameterOfBT{
 
         return 1+Math.max(r,l);
     }
+    
     public int diameterOfBinaryTree2(TreeNode root) {
         //optimal soultion with T(n) time complexity
         int diameter[] = new int[1];

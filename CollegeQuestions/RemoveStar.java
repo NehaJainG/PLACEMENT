@@ -27,4 +27,5 @@ public class RemoveStar {
         System.out.println(result);
 
     }
+    
 }

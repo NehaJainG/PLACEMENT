@@ -2,7 +2,8 @@ package Matrix;
 
 import java.util.Scanner;
 
-//first look understand Transpose of matrix. follow up of transpose problem
+//first understand Transpose of matrix. follow up of transpose problem
+//rotate the matrix 90 deg
 public class RotateImage {
 
     static int[][] rotateMatrix(int[][] m ){

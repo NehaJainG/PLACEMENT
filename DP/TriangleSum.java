@@ -25,4 +25,22 @@ public class TriangleSum {
         }
         return minSum;
     }
+
+    public int minimumTotal2(List<List<Integer>> t) {
+        //approach 2 moving in reverse direction
+        int n = t.size();
+        int m = t.get(n-1).size();
+        int[] dp = new int[m];
+        for(int i =0; i < m; i++){
+            dp[i] = t.get(n-1).get(i);
+        }
+        for(int i=n-2; i>=0; i--){
+            for(int j=0; j<t.get(i).size(); j++){
+                int down = dp[j] + t.get(i).get(j);
+                int diag = dp[j+1] + t.get(i).get(j);
+                dp[j] = Math.min(down,diag);
+            }
+        }
+        return dp[0];
+    }
 }
